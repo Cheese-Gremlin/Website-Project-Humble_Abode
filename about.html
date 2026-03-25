@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anouk's Humble Abode</title>
+
+  <!-- Describe your page — shows up in search results and browser tabs -->
+  <meta name="description" content="Anouk's Humble Abode - find anything and everything you need to know about Anouk Froitzheim">
+
+  <!-- Your styles -->
+  <link rel="stylesheet" href="styles.css">
+
+
+
+  <!-- loading in fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Tiny5&display=swap" rel="stylesheet">
+  <style>
+  body {
+    font-family: "Pixelify+Sans", sans-serif;
+  }
+  </style>
+
+
+  <style>
+     /* Keyboard users need to see where focus is */
+    :focus-visible {
+      outline: 2px solid currentColor;
+      outline-offset: 2px;
+    }
+
+    /* Respect users who prefer less motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* =============================================
+       BACKGROUND COLOUR
+       ============================================= */
+    body {
+      background: #88AE92;
+    }
+
+    /* =============================================
+       IMAGE POSITIONING SYSTEM
+       How it works:
+       - .img-layer is a fixed container covering the
+         full screen, anchored to the TOP-LEFT corner.
+       - Each .img-item is positioned relative to that
+         top-left corner using:
+             top:   distance DOWN  from top of screen
+             left: distance LEFT  from left of screen
+       - Change width/height on each .img-item to scale.
+       - Set pointer-events: none on non-clickable images.
+       ============================================= */
+
+    .img-layer {
+      position: fixed;
+      top: 7vh;
+      left: 50vw;      /* ----------------------------------- */
+      width: 0;
+      height: 0;
+      pointer-events: none; /* layer itself doesn't block clicks */
+      z-index: 10;          /* sits above page content; lower if needed */
+    }
+
+    .img-item {
+      position: absolute;
+      display: block;
+      overflow: hidden;
+    }
+
+    .img-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Non-clickable images */
+    .img-item.static {
+      pointer-events: none;
+    }
+
+    /* Clickable images */
+    .img-item.clickable {               
+      pointer-events: auto;
+      cursor: pointer;
+      transition: opacity 0.2s ease, transform 0.2s ease;        
+    }
+
+    .img-item.clickable:hover {  /* what image looks like when hovering over */
+      opacity: 1;
+      transform: scale(1.03);
+    }
+
+    /* =============================================
+       EXAMPLE IMAGE POSITIONS
+       Adjust top / left / width / height freely.
+       ============================================= */
+    #layout {
+      width: 75vw;
+      translate: -37.5vw;
+    }
+
+    #poster {
+      width: 50vw;
+      translate: -25vw;
+    }
+
+     #sign {
+      width: 41.367vw;
+      translate: -50vw -7vw;
+    }
+
+    
+  </style>
+</head>
+<body>
+
+  <!-- =============================================
+       IMAGE LAYER
+       All images live here, positioned relative to
+       the top-left corner of the screen.
+
+       TO ADD A NEW IMAGE:
+         1. Copy an .img-item block below.
+         2. Give it a new id (e.g. id="img-4").
+         3. Add a matching CSS rule above with
+            top / left / width / height values.
+         4. Replace the src with your image path.
+         5. For a clickable image, add class="img-item clickable"
+            and set data-href to the destination URL.
+         6. For a static (non-clickable) image, use
+            class="img-item static" and omit data-href.
+       ============================================= -->
+  <div class="img-layer" aria-hidden="true">
+
+
+     <!-- <div id="layout" class="img-item static">
+      <img
+        src="read_me-images/home_page_layout.png"
+        alt=""
+      >
+    </div> -->
+
+    <div id="poster" class="img-item static">
+      <img
+        src="home_page-images/poster.png"
+        alt=""
+      >
+    </div>
+
+    <!-- CLICKABLE image — redirects on click -->
+     <div
+      id="sign"
+      class="img-item clickable"
+      data-href="index.html"
+      role="link"
+      tabindex="0"
+      aria-label="Go to home page"
+    >
+      <img
+        src="home_page-images/sign.png"
+        alt=""
+      >
+    </div>
+   
+
+<!-- reference for image function layout -->
+    <!-- CLICKABLE image — redirects on click
+     <div
+      id="sign"
+      class="img-item clickable"
+      data-href="index.html"
+      role="link"
+      tabindex="0"
+      aria-label="Go to home page"
+    >
+      <img
+        src="home_page-images/sign.png"
+        alt=""
+      >
+    </div> -->
+
+
+  </div>
+
+  <!-- copyright text  -->
+  <div class="copyright">  &copy; <span id="year"></span> Anouk Froitzheim </div>
+
+
+  <script>
+
+    // =============================================
+    // CLICKABLE IMAGE REDIRECT HANDLER
+    // Works for both mouse clicks and keyboard Enter/Space.
+    // Just set data-href="your-url" on any .img-item.clickable
+    // and this script handles the rest automatically.
+    // =============================================
+    document.querySelectorAll('.img-item.clickable').forEach(item => {
+      const target = item.dataset.href;
+      if (!target || target === 'INSERT-REDIRECT-PAGE-HERE') return;
+
+      item.addEventListener('click', () => {
+        window.location.href = target;
+      });
+
+      item.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          window.location.href = target;
+        }
+      });
+    });
+
+
+  </script>
+
+  <!-- Your scripts -->
+  <script src="script.js"></script>
+
+
+
+</body>
+
+
+</html>
