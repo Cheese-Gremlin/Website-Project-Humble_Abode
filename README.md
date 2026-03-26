@@ -100,6 +100,7 @@ All pages:
 
 
 **working on the home page**
+25/03/26
 asking AI to help set up base structure:
 prompt 1:
     Hello
@@ -128,6 +129,7 @@ Own work:
     font used: https://fonts.google.com/specimen/Pixelify+Sans?query=pixel
     ⤷ loaded in 'pixelify+sans' font from google to HTML file (this needs to be added to every HTML file in order for the font to work. I couldnt manage to make it work so that its only necessary in the css file)
     ⤷ added 'copyright' class to style.css which changes the font, and position of the 'copyright section' so that it is always in the bottom left corner. 
+    ⤷ 26/03/26 moved where copyright is 'drawn' in loop to make sure its always drawn on top of images
 
 -loaded 'layout image' in to see where to place individual images and ran into an issue:
 ![alt text](read_me-images/home_page-pt2.png)
@@ -140,14 +142,18 @@ Own work:
     ⤷ not sure yet if im happy with this change. I liked having the entire 'browser window' be the room rather than just a small portion of it, as it made me feel like I was 'actually there'. However like this it is more accessible from different window sizes which is also good.
     i will work on adding images and the functionality of the page for now and then have another look at how to improve this so that I am 100% happy.
     If i want it to fill the whole frame I may have to resize some things in my layout so that they fit properly which should not be a problem (id just have to redraw some elements)
+    ⤷update 26/03/26 keeping the 'window view' because otherwise scaling will be an issue and with a frame it looks cleaner. Using a place holder frame for now but it doesnt feel very 'on theme'. i dont mind how it looks with the basic frame as it is very simple and straight forward but I feel like the frame is another potential area where i can 'show my personality' so I will keep thinking. ![alt text](home_page-images/page-frame.png)
 
 -loading images in with relation to vw to keep same spacing regardless of window size
 ![alt text](read_me-images/home_page-pt4.1.png)
 ![alt text](read_me-images/home_page-pt4.2.png)
-    everything scales properly when changinf window size due to building everything in relation to window width meaning it is also mobile compatible
+    everything scales properly when changing window size due to building everything in relation to window width meaning it is also mobile compatible
     -using AI image placement template has been very useful
 
 -making a clickable image
     when clicking on the 'poster' image the user gets redirect to the 'about image'. Here the user can press the 'sign' in the top left to return to the home page. 
     ![alt text](read_me-images/about_page-pt1.png)
+
+-about page
+    manually resized images 
 

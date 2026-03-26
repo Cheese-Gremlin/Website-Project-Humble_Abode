@@ -101,21 +101,33 @@
        EXAMPLE IMAGE POSITIONS
        Adjust top / left / width / height freely.
        ============================================= */
-    #layout {
-      width: 75vw;
-      translate: -37.5vw;
+
+    /* #layout {
+      width: 75vw; 
+      translate: -24vw 10vw;
+      scale: 2.5;
+    } */
+
+    #window-night {
+      width: 55vw;
+      translate: -71.5vw -16.5vw;
     }
 
+    #window-day {
+      width: 26.914vw;
+      translate: -71.5vw -16.5vw;
+    }
+
+    #corkboard{
+      width: 95vw;
+      translate: 13vw -18.5vw;
+    }
+
+     /* draw image this last */
     #poster {
-      width: 50vw;
-      translate: -25vw;
+      width: 45vw;
+      translate: -22.5vw -2vw;
     }
-
-     #sign {
-      width: 41.367vw;
-      translate: -50vw -7vw;
-    }
-
     
   </style>
 </head>
@@ -140,19 +152,34 @@
   <div class="img-layer" aria-hidden="true">
 
 
-     <!-- <div id="layout" class="img-item static">
+     <div id="layout" class="img-item static">
       <img
         src="read_me-images/home_page_layout.png"
         alt=""
       >
-    </div> -->
+    </div>
 
-    <div id="poster" class="img-item static">
+    <div id="window-night" class="img-item static">
       <img
-        src="home_page-images/poster.png"
+        src="home_page-images/window-night.png"
         alt=""
       >
     </div>
+
+    <div id="window-day" class="img-item static">
+      <img
+        src="home_page-images/window-day.png"
+        alt=""
+      >
+    </div>
+
+    <div id="corkboard" class="img-item static">
+      <img
+        src="home_page-images/corkboard.png"
+        alt=""
+      >
+    </div>
+
 
     <!-- CLICKABLE image — redirects on click -->
      <div
@@ -165,6 +192,14 @@
     >
       <img
         src="home_page-images/sign.png"
+        alt=""
+      >
+    </div>
+    <!-- draw image this last -->
+
+    <div id="poster" class="img-item static">
+      <img
+        src="home_page-images/poster.png"
         alt=""
       >
     </div>
@@ -185,12 +220,10 @@
         alt=""
       >
     </div> -->
-
-
-  </div>
-
   <!-- copyright text  -->
   <div class="copyright">  &copy; <span id="year"></span> Anouk Froitzheim </div>
+
+  </div>
 
 
   <script>

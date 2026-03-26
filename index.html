@@ -149,6 +149,13 @@
       translate: -2.4vw 27vw;
     }
 
+
+    /* draw image this last */
+    #page-frame {
+      width: 82vw;
+      translate: -41vw -11vw;
+    }
+
   </style>
 </head>
 <body>
@@ -193,7 +200,6 @@
       >
     </div>
 
-    <!-- CLICKABLE image — redirects on click -->
      <div
       id="sign"
       class="img-item clickable"
@@ -258,6 +264,16 @@
       >
     </div>
 
+<!-- /* draw image this last */ -->
+    <div id="page-frame" class="img-item static">
+      <img
+        src="home_page-images/page-frame.png"
+        alt=""
+      >
+    </div>
+
+
+
 <!-- reference for image function layout -->
     <!-- CLICKABLE image — redirects on click
      <div
@@ -274,11 +290,10 @@
       >
     </div> -->
 
+   <!-- copyright text  -->
+   <div class="copyright">  &copy; <span id="year"></span> Anouk Froitzheim </div>
 
   </div>
-
-  <!-- copyright text  -->
-  <div class="copyright">  &copy; <span id="year"></span> Anouk Froitzheim </div>
 
 
   <script>
@@ -293,6 +308,7 @@
       const target = item.dataset.href;
       if (!target || target === 'INSERT-REDIRECT-PAGE-HERE') return;
 
+      
       item.addEventListener('click', () => {
         window.location.href = target;
       });
@@ -310,7 +326,6 @@
 
   <!-- Your scripts -->
   <script src="script.js"></script>
-
 
 
 </body>
