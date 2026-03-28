@@ -51,7 +51,24 @@ body {
 }
 
 
+/* =============================================
+   PAGE TRANSITION OVERLAY
+   Tweak --transition-duration to change speed.
+   ============================================= */
+/* :root {
+  --transition-duration: 800ms; 
+  --transition-color: #88AE92; 
+}
 
+ #transition-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--transition-color);
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--transition-duration) ease;
+}
 
-
-
+#transition-overlay.fade-in  { opacity: 1; }
+#transition-overlay.fade-out { opacity: 0; }  */

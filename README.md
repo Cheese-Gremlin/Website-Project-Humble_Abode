@@ -98,10 +98,9 @@ All pages:
     -music controls -> skip/go back a song, change volume, Pause/Play etc.
 
 
-
-**working on the home page**
 25/03/26
-asking AI to help set up base structure:
+**starting the project via the home**
+asking _AI_ to help set up base structure:
 prompt 1:
     Hello
     Can you please help me transform 'index.html'. preferably don't touch the .js file or the css file unless necessary. 
@@ -120,18 +119,21 @@ response:
     Clickable images — add class="img-item clickable" and set data-href="your-page.html" on the div. The script at the bottom handles both click and keyboard navigation automatically. Non-interactive images use class="img-item static".
 output:
     ![alt text](read_me-images/Home_page-pt1.png)
+    ![alt text](<read_me-images/AI code pt1.1.png>)
+    ![alt text](<read_me-images/AI code pt1.2.png>)
+    ![alt text](<read_me-images/AI code pt1.3.png>)
 opinion:
     i accidentally asked it to relate it to the top right instead of the top left like i intended.. oopsieee... Easy fix by just changing all the 'right's to 'left's 
 
-Own work: 
--Changed 'copy right' font to 'pixelify+sans' 
+_Own work:_
+**-Changed 'copy right' font to 'pixelify+sans'**
 ![alt text](read_me-images/copright-update.png)
     font used: https://fonts.google.com/specimen/Pixelify+Sans?query=pixel
     ⤷ loaded in 'pixelify+sans' font from google to HTML file (this needs to be added to every HTML file in order for the font to work. I couldnt manage to make it work so that its only necessary in the css file)
     ⤷ added 'copyright' class to style.css which changes the font, and position of the 'copyright section' so that it is always in the bottom left corner. 
     ⤷ 26/03/26 moved where copyright is 'drawn' in loop to make sure its always drawn on top of images
 
--loaded 'layout image' in to see where to place individual images and ran into an issue:
+**-loaded 'layout image' in to see where to place individual images and ran into an issue:**
 ![alt text](read_me-images/home_page-pt2.png)
     -issue is that i drew the layout for '1920x1080' but didnt calculate in the space of the monitor that the actual browser window takes up (e.g. search bar, tabs, etc.), which means that my Image is not on thhe correct scale nor will it fit without parts being cut off or awkward gaps
     -My solution is to have a small border around the entire layout so that everything can be seen, instead of having the image go all the way to the edge. This will also make the site more accessible from different devices and window sizes.
@@ -144,16 +146,61 @@ Own work:
     If i want it to fill the whole frame I may have to resize some things in my layout so that they fit properly which should not be a problem (id just have to redraw some elements)
     ⤷update 26/03/26 keeping the 'window view' because otherwise scaling will be an issue and with a frame it looks cleaner. Using a place holder frame for now but it doesnt feel very 'on theme'. i dont mind how it looks with the basic frame as it is very simple and straight forward but I feel like the frame is another potential area where i can 'show my personality' so I will keep thinking. ![alt text](home_page-images/page-frame.png)
 
--loading images in with relation to vw to keep same spacing regardless of window size
+**-loading images in with relation to vw to keep same spacing regardless of window size**
 ![alt text](read_me-images/home_page-pt4.1.png)
 ![alt text](read_me-images/home_page-pt4.2.png)
     everything scales properly when changing window size due to building everything in relation to window width meaning it is also mobile compatible
     -using AI image placement template has been very useful
 
--making a clickable image
-    when clicking on the 'poster' image the user gets redirect to the 'about image'. Here the user can press the 'sign' in the top left to return to the home page. 
-    ![alt text](read_me-images/about_page-pt1.png)
+**-about page**
+    added images in position and sizes to look as though it is a zoomed in version of the home page and as if the user has walked closer to the wall. 
+    The 'poster image' in the home page now links to the about page when clicked on (click and redirect function was coded by AI)
+    ![alt text](read_me-images/about_page-pt2.png)
 
--about page
-    manually resized images 
+**-transition** _with AI_
+prompt: 
+    Hi there!
+    Can you please help me make a transition when the user travels between html pages?
+    It is currently set up that the user presses an image (e.g. the 'poster' image in the index html) and then gets redirected to the corresponding html using the following script: 
+        // =============================================
+        // CLICKABLE IMAGE REDIRECT HANDLER
+        // Works for both mouse clicks and keyboard Enter/Space.
+        // Just set data-href="your-url" on any .img-item.clickable
+        // and this script handles the rest automatically.
+        // =============================================
+        document.querySelectorAll('.img-item.clickable').forEach(item => {
+        const target = item.dataset.href;
+        if (!target || target === 'INSERT-REDIRECT-PAGE-HERE') return;
+
+        
+        item.addEventListener('click', () => {
+            window.location.href = target;
+        });
+
+        item.addEventListener('keydown', e => {
+            if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            window.location.href = target;
+            }
+        });
+        });
+    Please use this to create a transition so that the scene from the starting html 'melts' into the scene of the target html.
+    I would like this to be done with very minimal code and so that I can easily tweak things like how long the transition takes.
+    Please let me know if you have any questions
+response: 
+    What a fun personal site! Here's what I'd suggest for the "melt" effect:The approach here is a single shared transition.js file you can drop in once and reference from every page. The melt effect uses a full-screen canvas that captures the current page, then pixelates/drips it away as the new page loads.
+    Actually, the cleanest approach for a "melt" between real HTML pages is a CSS overlay technique — no canvas needed. Here's how it works:
+    The idea: on click, instead of immediately navigating, you fade out the current page (with a slight downward drift to feel like melting), then navigate. The new page fades in on load. All timing is controlled by one CSS custom property.
+    Replace the <script> block in both HTML files with this:
+![alt text](<read_me-images/AI code pt2.png>)
+    What to tweak:
+    TRANSITION_DURATION — increase for a slower, dreamier melt; decrease for snappier
+    TRANSITION_DRIFT — how far the scene slides down as it melts out (and up as the new one arrives)
+    The blur(6px) in the CSS — increase for a more extreme melt, set to blur(0px) for a clean fade with no blur
+    The double requestAnimationFrame on the fade-in is important — it gives the browser one frame to paint the blurred/offset starting state before animating to the normal state, so the entrance is always smooth.
+output:
+    when navigating between pages the 'old' page slides downwards and fades, then the background is displayed for a short time and then the 'new' page fades in while sliding down from the top.
+opinion:
+    I quite like this at it is a smooth transition. I would prefer for the transition to seem more like the user is stepping closer to the wall which could be done by having the transition be a zoom in to the home page or a pop out of the clicked on image/new page. I tried asking AI to do that but it didnt look as I wanted as it just scaled up all the images and therefore messed up the placing. 
+    The 'sliding fade' transition works for now as it gets the job done. I will focus on making the rest of the page functional and then come back to this after if i still have time.
 

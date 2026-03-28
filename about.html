@@ -97,36 +97,67 @@
       transform: scale(1.03);
     }
 
+
     /* =============================================
        EXAMPLE IMAGE POSITIONS
        Adjust top / left / width / height freely.
        ============================================= */
 
     /* #layout {
-      width: 75vw; 
-      translate: -24vw 10vw;
+      width: 75vw;
+      translate: -24vw 10vw; 
       scale: 2.5;
     } */
 
+     #corkboard{
+      width: 95vw;
+      translate: 13vw -18.5vw;
+    }
+
+    #shelf {
+      width: 82vw;
+      translate: -78vw 23vw;
+    }
+
+     #sign {
+      width: 100vw;
+      translate: -16vw -26vw;
+    }
+
+    #desk {
+      width: 100vw;
+      translate: 8vw 11vw;
+    }
+
+     #PC {
+      width: 100vw;
+      translate: 8vw 11vw;
+    }
+
+    #chair {
+      width: 50vw;
+      translate: 10vw 45vw;
+    }
+
     #window-night {
-      width: 55vw;
-      translate: -71.5vw -16.5vw;
+      width: 68vw;
+      translate: -80.8vw -28vw;
     }
 
     #window-day {
-      width: 26.914vw;
-      translate: -71.5vw -16.5vw;
-    }
-
-    #corkboard{
-      width: 95vw;
-      translate: 13vw -18.5vw;
+      width: 68vw;
+      translate: -80.8vw -28vw;
     }
 
      /* draw image this last */
     #poster {
       width: 45vw;
       translate: -22.5vw -2vw;
+    }
+
+    #page-frame {
+      width: 200vw;
+      translate: -80vw -48vw;
     }
     
   </style>
@@ -159,6 +190,56 @@
       >
     </div>
 
+    <div id="corkboard" class="img-item static">
+      <img
+        src="home_page-images/corkboard.png"
+        alt=""
+      >
+    </div>
+
+    <div id="shelf" class="img-item static">
+      <img
+        src="home_page-images/shelf.png"
+        alt=""
+      >
+    </div>
+
+     <div
+      id="sign"
+      class="img-item clickable"
+      data-href="index.html"
+      role="link"
+      tabindex="0"
+      aria-label="Go to home page"
+    >
+      <img
+        src="home_page-images/sign.png"
+        alt=""
+      >
+    </div>
+
+    <div id="desk" class="img-item static">
+      <img
+        src="home_page-images/desk.png"
+        alt=""
+      >
+    </div>
+
+    <div id="PC" class="img-item static">
+      <img
+        src="home_page-images/PC.png"
+        alt=""
+      >
+    </div>
+
+    <div id="chair" class="img-item static">
+      <img
+        src="home_page-images/chair.png"
+        alt=""
+      >
+    </div>
+
+
     <div id="window-night" class="img-item static">
       <img
         src="home_page-images/window-night.png"
@@ -166,16 +247,17 @@
       >
     </div>
 
-    <div id="window-day" class="img-item static">
+     <div id="window-day" class="img-item static">
       <img
         src="home_page-images/window-day.png"
         alt=""
       >
     </div>
+    
 
-    <div id="corkboard" class="img-item static">
+    <div id="page-frame" class="img-item static">
       <img
-        src="home_page-images/corkboard.png"
+        src="home_page-images/page-frame.png"
         alt=""
       >
     </div>
@@ -220,38 +302,68 @@
         alt=""
       >
     </div> -->
+
+
   <!-- copyright text  -->
-  <div class="copyright">  &copy; <span id="year"></span> Anouk Froitzheim </div>
+   <div class="copyright">  &copy; <span id="year"></span> Anouk Froitzheim </div>
+
 
   </div>
+<script>
+  // =============================================
+  // PAGE TRANSITION — "MELT" EFFECT
+  // Tweak these two values to adjust the feel:
+  // =============================================
+  const TRANSITION_DURATION = 300;   // milliseconds — how long each half takes
+  const TRANSITION_DRIFT    = 20;    // pixels — how far down the page "melts"
 
+  // Inject the transition styles
+  const style = document.createElement('style');
+  style.textContent = `
+    .img-layer {
+      transition: opacity ${TRANSITION_DURATION}ms ease,
+                  transform ${TRANSITION_DURATION}ms ease,
+                  filter ${TRANSITION_DURATION}ms ease;
+    }
+    .img-layer.melt-out {
+      opacity: 0;
+      transform: translateY(${TRANSITION_DRIFT}px);
+      filter: blur(6px);
+    }
+    .img-layer.melt-in {
+      opacity: 0;
+      transform: translateY(-${TRANSITION_DRIFT}px);
+      filter: blur(6px);
+    }
+  `;
+  document.head.appendChild(style);
 
-  <script>
+  // Fade IN on page load
+  const layer = document.querySelector('.img-layer');
+  layer.classList.add('melt-in');
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => layer.classList.remove('melt-in'));
+  });
 
-    // =============================================
-    // CLICKABLE IMAGE REDIRECT HANDLER
-    // Works for both mouse clicks and keyboard Enter/Space.
-    // Just set data-href="your-url" on any .img-item.clickable
-    // and this script handles the rest automatically.
-    // =============================================
-    document.querySelectorAll('.img-item.clickable').forEach(item => {
-      const target = item.dataset.href;
-      if (!target || target === 'INSERT-REDIRECT-PAGE-HERE') return;
+  // Fade OUT then navigate on click/keydown
+  function navigateTo(url) {
+    layer.classList.add('melt-out');
+    setTimeout(() => { window.location.href = url; }, TRANSITION_DURATION);
+  }
 
-      item.addEventListener('click', () => {
-        window.location.href = target;
-      });
+  document.querySelectorAll('.img-item.clickable').forEach(item => {
+    const target = item.dataset.href;
+    if (!target || target === 'INSERT-REDIRECT-PAGE-HERE') return;
 
-      item.addEventListener('keydown', e => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          window.location.href = target;
-        }
-      });
+    item.addEventListener('click', () => navigateTo(target));
+    item.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        navigateTo(target);
+      }
     });
-
-
-  </script>
+  });
+</script>
 
   <!-- Your scripts -->
   <script src="script.js"></script>

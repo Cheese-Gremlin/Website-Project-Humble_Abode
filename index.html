@@ -290,39 +290,68 @@
       >
     </div> -->
 
+
+
+
    <!-- copyright text  -->
    <div class="copyright">  &copy; <span id="year"></span> Anouk Froitzheim </div>
 
   </div>
+<script>
+  // =============================================
+  // PAGE TRANSITION — "MELT" EFFECT
+  // Tweak these two values to adjust the feel:
+  // =============================================
+  const TRANSITION_DURATION = 300;   // milliseconds — how long each half takes
+  const TRANSITION_DRIFT    = 20;    // pixels — how far down the page "melts"
 
+  // Inject the transition styles
+  const style = document.createElement('style');
+  style.textContent = `
+    .img-layer {
+      transition: opacity ${TRANSITION_DURATION}ms ease,
+                  transform ${TRANSITION_DURATION}ms ease,
+                  filter ${TRANSITION_DURATION}ms ease;
+    }
+    .img-layer.melt-out {
+      opacity: 0;
+      transform: translateY(${TRANSITION_DRIFT}px);
+      filter: blur(6px);
+    }
+    .img-layer.melt-in {
+      opacity: 0;
+      transform: translateY(-${TRANSITION_DRIFT}px);
+      filter: blur(6px);
+    }
+  `;
+  document.head.appendChild(style);
 
-  <script>
+  // Fade IN on page load
+  const layer = document.querySelector('.img-layer');
+  layer.classList.add('melt-in');
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => layer.classList.remove('melt-in'));
+  });
 
-    // =============================================
-    // CLICKABLE IMAGE REDIRECT HANDLER
-    // Works for both mouse clicks and keyboard Enter/Space.
-    // Just set data-href="your-url" on any .img-item.clickable
-    // and this script handles the rest automatically.
-    // =============================================
-    document.querySelectorAll('.img-item.clickable').forEach(item => {
-      const target = item.dataset.href;
-      if (!target || target === 'INSERT-REDIRECT-PAGE-HERE') return;
+  // Fade OUT then navigate on click/keydown
+  function navigateTo(url) {
+    layer.classList.add('melt-out');
+    setTimeout(() => { window.location.href = url; }, TRANSITION_DURATION);
+  }
 
-      
-      item.addEventListener('click', () => {
-        window.location.href = target;
-      });
+  document.querySelectorAll('.img-item.clickable').forEach(item => {
+    const target = item.dataset.href;
+    if (!target || target === 'INSERT-REDIRECT-PAGE-HERE') return;
 
-      item.addEventListener('keydown', e => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          window.location.href = target;
-        }
-      });
+    item.addEventListener('click', () => navigateTo(target));
+    item.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        navigateTo(target);
+      }
     });
-
-
-  </script>
+  });
+</script>
 
   <!-- Your scripts -->
   <script src="script.js"></script>
