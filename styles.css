@@ -39,36 +39,34 @@ body {
   border-color: mediumPurple; /* #9370DB */
 }
 
-
 /* Copyright text */
 .copyright {
   position: fixed;
-  top: 95vh;
+  bottom: 37px;
   left: 10px;
   font-size: 20px;
   font-family: "Pixelify Sans", sans-serif;
   font-weight: 50px;
+  color: #0000007e;
 }
 
-
-/* =============================================
-   PAGE TRANSITION OVERLAY
-   Tweak --transition-duration to change speed.
-   ============================================= */
-/* :root {
-  --transition-duration: 800ms; 
-  --transition-color: #88AE92; 
-}
-
- #transition-overlay {
+.name {
   position: fixed;
-  inset: 0;
-  background: var(--transition-color);
-  z-index: 9999;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity var(--transition-duration) ease;
+  bottom: 15px;
+  left: 10px;
+  font-size: 20px;
+  font-family: "Pixelify Sans", sans-serif;
+  font-weight: 50px;
+  color: #0000007e;
 }
 
-#transition-overlay.fade-in  { opacity: 1; }
-#transition-overlay.fade-out { opacity: 0; }  */
+.disclaimer{
+  position: fixed;
+  width: 9vw;
+  top: 15px;
+  left: 10px;
+  font-size: 17px;
+  font-family: "Pixelify Sans", sans-serif;
+  font-weight: 50px;
+  color: #0000007e;
+}

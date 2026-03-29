@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
   <title>Anouk's Humble Abode</title>
 
   <!-- Describe your page — shows up in search results and browser tabs -->
@@ -130,8 +131,8 @@
     }
 
     #corkboard{
-      width: 37.73vw;
-      translate: -0.3vw 1.3vw;
+      width: 30vw;
+      translate: 6vw 3.7vw;
     }
 
     #poster {
@@ -150,11 +151,28 @@
     }
 
 
-    /* draw image this last */
+    /* draw these images last */
     #page-frame {
       width: 82vw;
       translate: -41vw -11vw;
     }
+
+    /* button section*/
+    #button-board {
+     width: 11.5vw;
+     translate: 39.5vw -3.4vw;
+    }
+
+    #menu-button {
+     width: 4.95vw;
+      translate: 44.2vw -2.8vw;
+    }
+
+    #home-button {
+      width: 4.95vw;
+      translate: 41vw -2.85vw;
+    }
+   /* button section ends*/
 
   </style>
 </head>
@@ -182,56 +200,57 @@
      <!-- <div id="layout" class="img-item static">
       <img
         src="read_me-images/home_page_layout.png"
-        alt=""
+        alt="sketch of final layout of objects/images"
       >
     </div> -->
 
     <div id="shelf" class="img-item static">
       <img
         src="home_page-images/shelf.png"
-        alt=""
+        alt="drawing of a shelf"
       >
     </div>
 
     <div id="desk" class="img-item static">
       <img
         src="home_page-images/desk.png"
-        alt=""
+        alt="drawing of a desk"
       >
     </div>
 
-     <div
-      id="sign"
-      class="img-item clickable"
-      data-href="index.html"
-      role="link"
-      tabindex="0"
-      aria-label="Go to home page"
-    >
+    <div id="sign" class="img-item static">
       <img
         src="home_page-images/sign.png"
-        alt=""
+        alt="drawing of a sign saying 'anouk's humble abode'"
       >
     </div>
 
     <div id="window-night" class="img-item static">
       <img
         src="home_page-images/window-night.png"
-        alt=""
+        alt="drawing of a window when its night time"
       >
     </div>
 
     <div id="window-day" class="img-item static">
       <img
         src="home_page-images/window-day.png"
-        alt=""
+        alt="drawing of a window when its day time"
       >
     </div>
 
-    <div id="corkboard" class="img-item static">
+
+    <div
+      id="corkboard"
+      class="img-item clickable"
+      data-href="gallery.html"
+      role="link"
+      tabindex="0"
+      aria-label="Go to gallery page"
+    >
       <img
         src="home_page-images/corkboard.png"
-        alt=""
+        alt="drawing of a corkboard with small papers hung up across it and the words 'my work'. when clicked on redirects user to 'gallery page'"
       >
     </div>
 
@@ -245,7 +264,7 @@
     >
       <img
         src="home_page-images/poster.png"
-        alt=""
+        alt="drawing of a poster saying 'who am i'. when clicked on redirects user to 'about page'"
       >
     </div>
 
@@ -253,14 +272,14 @@
     <div id="PC" class="img-item static">
       <img
         src="home_page-images/PC.png"
-        alt=""
+        alt="drawing of a Desktop computer"
       >
     </div>
 
     <div id="chair" class="img-item static">
       <img
         src="home_page-images/chair.png"
-        alt=""
+        alt="drawing of a chair"
       >
     </div>
 
@@ -268,33 +287,47 @@
     <div id="page-frame" class="img-item static">
       <img
         src="home_page-images/page-frame.png"
-        alt=""
+        alt="drawing of a frame that surrounds all other images on the page"
       >
     </div>
 
+   <!-- button section -->
+ <div id="button-board" class="img-item static">
+      <img
+        src="home_page-images/button-board.png"
+        alt="drawing of a blank wooden sign/board"
+      >
+    </div>
 
-
-<!-- reference for image function layout -->
-    <!-- CLICKABLE image — redirects on click
+ <div id="menu-button" class="img-item static">
+      <img
+        src="home_page-images/menu-button.png"
+        alt="drawing of 3 horizontal green lines stacked on top each other"
+      >
+    </div>
+  
      <div
-      id="sign"
+      id="home-button"
       class="img-item clickable"
       data-href="index.html"
       role="link"
       tabindex="0"
-      aria-label="Go to home page"
+      aria-label="opens menu on side of screen"
     >
       <img
-        src="home_page-images/sign.png"
-        alt=""
+        src="home_page-images/home-button.png"
+        alt="drawing of a small house. when clicked on redirects user to 'home page'"
       >
-    </div> -->
-
-
+    </div>
+   <!-- button section ends -->
 
 
    <!-- copyright text  -->
-   <div class="copyright">  &copy; <span id="year"></span> Anouk Froitzheim </div>
+   <div class="copyright">  &copy; <span id="year"></span> </div>
+   <div class="name"> Anouk Froitzheim </div>
+
+   <!-- disclaimer text  -->
+   <div class="disclaimer"> This website is best viewed on laptop/PC in full screen mode </div>
 
   </div>
 <script>

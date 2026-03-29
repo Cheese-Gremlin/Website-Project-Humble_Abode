@@ -39,7 +39,7 @@ I want the website to be cosy and not overwhelming. I want everything to have a 
 All pages:
     -text in top left saying 'Hi! please view this website on a monitor and full screen the page for the best experience'
     -if user is on mobile text that say 'Hi! im really sorry but this website is not currently functional on mobile, please use a computer/ bigger screen'  
-    ----icon---- in top right corner which opens a menu 'banner' or right hand side of page
+    -icon in top right corner which opens a menu 'banner' or right hand side of page
     ⤷ easy navigation to other pages
     ⤷ basic music controls (e.g. skip, pause, volume etc.)
     ⤷ toggle custom cursor 
@@ -123,7 +123,8 @@ output:
     ![alt text](<read_me-images/AI code pt1.2.png>)
     ![alt text](<read_me-images/AI code pt1.3.png>)
 opinion:
-    i accidentally asked it to relate it to the top right instead of the top left like i intended.. oopsieee... Easy fix by just changing all the 'right's to 'left's 
+    i accidentally asked it to relate it to the top right instead of the top left like i intended.. oopsieee... Easy fix by just changing all the 'right's to 'left's.
+    I like how it added a slight 'expand' to clickable images when they are hovered over. I was intending to ask it to add something like this but it already did it :D
 
 _Own work:_
 **-Changed 'copy right' font to 'pixelify+sans'**
@@ -132,6 +133,7 @@ _Own work:_
     ⤷ loaded in 'pixelify+sans' font from google to HTML file (this needs to be added to every HTML file in order for the font to work. I couldnt manage to make it work so that its only necessary in the css file)
     ⤷ added 'copyright' class to style.css which changes the font, and position of the 'copyright section' so that it is always in the bottom left corner. 
     ⤷ 26/03/26 moved where copyright is 'drawn' in loop to make sure its always drawn on top of images
+    ⤷ 29/03/26 made text slightly transparent (same as 'disclaimer text') and separated the words into two lines so that it doesnt overlap the images (on home page)
 
 **-loaded 'layout image' in to see where to place individual images and ran into an issue:**
 ![alt text](read_me-images/home_page-pt2.png)
@@ -156,6 +158,10 @@ _Own work:_
     added images in position and sizes to look as though it is a zoomed in version of the home page and as if the user has walked closer to the wall. 
     The 'poster image' in the home page now links to the about page when clicked on (click and redirect function was coded by AI)
     ![alt text](read_me-images/about_page-pt2.png)
+    -update:
+        added rest of images so that full scene is visible when window is full screen on an upright monitor
+        ![alt text](read_me-images/about_page-pt3.1.png) (full screen horizontal monitor)
+        ![alt text](read_me-images/about_page-pt3.2.png) (full screen vertical monitor, similar to what it would look like on mobile)
 
 **-transition** _with AI_
 prompt: 
@@ -203,4 +209,27 @@ output:
 opinion:
     I quite like this at it is a smooth transition. I would prefer for the transition to seem more like the user is stepping closer to the wall which could be done by having the transition be a zoom in to the home page or a pop out of the clicked on image/new page. I tried asking AI to do that but it didnt look as I wanted as it just scaled up all the images and therefore messed up the placing. 
     The 'sliding fade' transition works for now as it gets the job done. I will focus on making the rest of the page functional and then come back to this after if i still have time.
+
+**-navigation buttons**
+    added 'home' and 'menu' button to the top right corner of every page. 
+    'hom' button links to 'bedroom page'. Menu button currently not functional(check design plan at the top of readme for what it is supposed to do)
+    ![alt text](read_me-images/buttons-home.png)
+    ![alt text](read_me-images/buttons-about.png)
+    buttons on about page 'blend' in a little and dont look as clear but are still functional. May change design of buttons later to stick out more if time allows it. 
+    This change also means that the 'anouk's humble abode' sign in the bedroom is no longer clickable. 
+
+**-disclaimer text**
+    -added a text to home page in the top left of the screen letting users know that the website is best viewed on laptop/PC on full screen. I made it a slightly transparent black so that it would be noticeable enough but not distracting from the overall page. The text is placed in a 'text box' so that it wraps so that it never covers the frame and always stays on the green in order to keep the text easy to read. (it overlaps when the window is made very very thin in width but very tall in height but this is a very unlikely screen size so shouldnt be a problem)
+    colour of text is not up to 'accessability' standards. It would have to be fully black to meet them but that would make them stand out more and not align with design goals. Therefore this text is also written in the 'menu' text in full black. ---------------
+-----------------------------
+    Additionally, the text is not vital and the user can this experience the website without seeing/ reading it.
+    ![alt text](read_me-images/disclaimer.png)
+
+
+**-gallery page**
+    made gallery page and added pictures of projects which can be clicked on to be redirected to relating 'project' page. 
+    ![alt text](<read_me-images/gallery page.png>)
+    also updated what the corkboard looks like on all pages
+    ![alt text](<read_me-images/corkboard update on about.png>)
+    ![alt text](<read_me-images/corkboard update on home.png>)
 
