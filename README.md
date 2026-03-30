@@ -217,6 +217,9 @@ opinion:
     ![alt text](read_me-images/buttons-about.png)
     buttons on about page 'blend' in a little and dont look as clear but are still functional. May change design of buttons later to stick out more if time allows it. 
     This change also means that the 'anouk's humble abode' sign in the bedroom is no longer clickable. 
+    ⤷ 30/03/26
+    changed wood colour of sign (same as frame) to make it more easy to notice and not blend into backgrounds. 
+    ![alt text](<read_me-images/buttons-home pt2.png>)
 
 **-disclaimer text**
     -added a text to home page in the top left of the screen letting users know that the website is best viewed on laptop/PC on full screen. I made it a slightly transparent black so that it would be noticeable enough but not distracting from the overall page. The text is placed in a 'text box' so that it wraps so that it never covers the frame and always stays on the green in order to keep the text easy to read. (it overlaps when the window is made very very thin in width but very tall in height but this is a very unlikely screen size so shouldnt be a problem)
@@ -232,4 +235,15 @@ opinion:
     also updated what the corkboard looks like on all pages
     ![alt text](<read_me-images/corkboard update on about.png>)
     ![alt text](<read_me-images/corkboard update on home.png>)
+
+
+**-project pages** 
+all project pages will have the same build/layout 
+due to time constraints I have only dont the wallpaper page for demonstration purposes (may do more if time allows for it)
+- wallpaper page
+    -change background colour to be same as corkboard
+    -loaded image into wallpaper page
+    ⤷ re-used the same image used in the gallery page. Ideally the paper and individual works would be their own separate images and therefore higher quality but for the scope of this project this is good enough (may change if time allows for it)
+    -added a title and some text about the project
+    ![alt text](<read_me-images/wallpapers page.png>)
 

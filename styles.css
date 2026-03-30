@@ -1,6 +1,4 @@
-body {
-  background: #88AE92;
-}
+
 
 /* Title */
 .title {
@@ -69,4 +67,24 @@ body {
   font-family: "Pixelify Sans", sans-serif;
   font-weight: 50px;
   color: #0000007e;
+}
+
+.worksTitle{
+  position: static;
+  width: 37vw;
+  translate: 11vw 8vw;
+  font-size: 3vw;
+  font-family: "Pixelify Sans", sans-serif;
+  font-weight: 50px;
+  color: #000000c7;
+}
+
+.worksText{
+  position: static;
+  width: 37vw;
+  translate: 11vw 10vw;
+  font-size: 2vw;
+  font-family: "Pixelify Sans", sans-serif;
+  font-weight: 50px;
+  color: #000000af;
 }
