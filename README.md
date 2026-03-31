@@ -247,3 +247,20 @@ due to time constraints I have only dont the wallpaper page for demonstration pu
     -added a title and some text about the project
     ![alt text](<read_me-images/wallpapers page.png>)
 
+**-window changing day/night** _with AI_
+prompt: 
+    can you fetch the API from this website: https://api.sunrise-sunset.org/json?lat=-41.28&lng=174.77 which shows when sunset and sunrise are in nz so that i can add it into my html file?
+    I want to use to to toggle the value of the opacity (represented by windowOpacity) in the following code (which is an ID placed in a style section in my html) on when it is day or night: 
+    #window-day {
+      width: 26.914vw;
+      translate: -37.5vw -2.2vw;
+      opacity: windowOpacity; 
+    }
+    please let me know if you have any questions
+output: 
+    CSS cannot use JavaScript variables directly like that — opacity: windowOpacity won't work as CSS doesn't know about JS variables.
+    Instead you can set the opacity in the JS directly.
+    ![alt text](<read_me-images/AI window code.png>)
+opinion:
+    I tested this by imputing different co-ordinates in of where it is currently day/night
+    happy with what it did. this was similar to what i attempted to make (spend about 2-3 hours doing it myself using what i found online) but wasnt able to because i didnt know the specific wording of things and had trouble finding them online. 
