@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Record Player</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎵</text></svg>">
+  <!-- Describe your page — shows up in search results and browser tabs -->
+  <meta name="description" content="Anouk's Humble Abode - Music Controls">
+
+  <!-- Your styles -->
+  <link rel="stylesheet" href="styles.css">
+
+
+
+  <!-- loading in fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Tiny5&display=swap" rel="stylesheet">
+  <style>
+  body {
+    font-family: "Pixelify+Sans", sans-serif;
+  }
+  </style>
+
+
+  <style>
+     /* Keyboard users need to see where focus is */
+    :focus-visible {
+      outline: 2px solid currentColor;
+      outline-offset: 2px;
+    }
+
+    /* Respect users who prefer less motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* =============================================
+       BACKGROUND COLOUR
+       ============================================= */
+    body {
+      background: #6A9475; /* wall: #87ad91 floor: #6A9475*/
+    }
+
+    /* =============================================
+       IMAGE POSITIONING SYSTEM
+       How it works:
+       - .img-layer is a fixed container covering the
+         full screen, anchored to the TOP-LEFT corner.
+       - Each .img-item is positioned relative to that
+         top-left corner using:
+             top:   distance DOWN  from top of screen
+             left: distance LEFT  from left of screen
+       - Change width/height on each .img-item to scale.
+       - Set pointer-events: none on non-clickable images.
+       ============================================= */
+
+    .img-layer {
+      position: fixed;
+      top: 7vh;
+      left: 50vw;      /* ----------------------------------- */
+      width: 0;
+      height: 0;
+      pointer-events: none; /* layer itself doesn't block clicks */
+      z-index: 10;          /* sits above page content; lower if needed */
+    }
+
+    .img-item {
+      position: absolute;
+      display: block;
+      overflow: hidden;
+    }
+
+    .img-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Non-clickable images */
+    .img-item.static {
+      pointer-events: none;
+    }
+
+    /* Clickable images */
+    .img-item.clickable {               
+      pointer-events: auto;
+      cursor: pointer;
+      transition: opacity 0.2s ease, transform 0.2s ease;        
+    }
+
+    .img-item.clickable:hover {  /* what image looks like when hovering over */
+      opacity: 1;
+      transform: scale(1.03);
+    }
+
+    /* =============================================
+       IMAGE POSITIONS
+       Adjust top / left / width / height freely.
+       ============================================= */
+
+    #wall {
+      width: 150vw;
+      translate: -50vw -15vw;
+      opacity: 0.5;
+    }
+
+    #shelf {
+      width: 180vw;
+      translate: -100vw 13vw;
+    }
+
+    #recordPlayer{
+      width: 80vw;
+      translate: -36vw 9.7vw;
+    }
+
+    #rewind-button{
+      width: 10vw;
+      translate: -35vw 26.3vw;
+    }
+
+    #play-pause-button{
+      width: 10vw;
+      translate: -25.5vw 26.4vw;
+    }
+
+    #skip-button{
+      width: 10vw;
+      translate: -15.9vw 26.2vw;
+    }
+
+ /* button section*/
+    #button-board {
+     width: 16vw;
+     translate: 34vw -3.2vw;
+    }
+
+    #back-button {
+      width: 3.1vw;
+      translate: 45.3vw -2.5vw;
+    }
+
+    #menu-button {
+     width: 4.95vw;
+      translate: 41.5vw -2.8vw;
+    }
+
+    #home-button {
+      width: 4.95vw;
+      translate: 38.2vw -2.85vw;
+    }
+
+    #music-button {
+     width: 3.2vw;
+      translate: 35.8vw -2.2vw;
+    }
+   /* button section ends*/
+/* MUSIC PLAYER */
+
+    #song-title {
+        position: static;
+        width: 30vw;
+        translate: -4.7vw 30vw;
+        font-size: 1.5vw;
+        font-family: "Pixelify Sans", sans-serif;
+        color: #000000;
+    }
+
+    /* --- Individual button wrapper */
+    .player-btn {
+        cursor: pointer;
+    }
+
+   /* volume stuff */
+    #volume-control {
+    position: static;
+    width: 24.5vw;
+    translate: -5.6vw 26.5vw;
+    }
+
+    #volume-track-container {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    overflow: visible;
+    width: 24.5vw; 
+    }
+
+    #volume-track-container {
+    position: relative;
+    width: 24vw;
+    display: inline-block;
+    }
+
+    #volume-knob-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 3vw;
+    height: 3vw;
+    overflow: visible;
+    }
+
+    #volume-knob:active {
+    cursor: grabbing;
+    }
+
+    #volume-track-container .img-item.static {
+    position: relative;
+    width: 24.5vw;
+    height: auto;
+    overflow: visible;
+    }
+
+  </style>
+
+
+</head>
+<body>
+
+  <!-- =============================================
+       IMAGE LAYER
+       All images live here, positioned relative to
+       the top-left corner of the screen.
+
+       TO ADD A NEW IMAGE:
+         1. Copy an .img-item block below.
+         2. Give it a new id (e.g. id="img-4").
+         3. Add a matching CSS rule above with
+            top / left / width / height values.
+         4. Replace the src with your image path.
+         5. For a clickable image, add class="img-item clickable"
+            and set data-href to the destination URL.
+         6. For a static (non-clickable) image, use
+            class="img-item static" and omit data-href.
+       ============================================= -->
+  <div class="img-layer" aria-hidden="true">
+
+        <div id="wall" class="img-item static">
+      <img
+        src="home_page-images/wall.png"
+        alt="dark green floor"
+      >
+    </div>
+
+    <div id="shelf" class="img-item static">
+      <img
+        src="home_page-images/shelf.png"
+        alt="drawing of a shelf"
+      >
+    </div>
+
+    <div id="recordPlayer" class="img-item static">
+      <img
+        src="music/recordPlayer.png"
+        alt="drawing of a record player"
+      >
+    </div>
+
+
+   <!-- button section -->
+ <div id="button-board" class="img-item static">
+      <img
+        src="home_page-images/button-board.png"
+        alt="drawing of a blank wooden sign/board"
+      >
+    </div>
+
+    <div
+      id="back-button"
+      class="img-item clickable"
+      role="button"
+      tabindex="0"
+      aria-label="goes back to the previous page"
+      onclick="history.back()"
+    >
+      <img
+        src="home_page-images/back-button.png"
+        alt="drawing of a back arrow, when clicked returns to previous page"
+      >
+    </div>
+
+    <div
+      id="menu-button"
+      class="img-item clickable"
+      data-href="menu.html"
+      role="link"
+      tabindex="0"
+      aria-label="opens menu page"
+    >
+      <img
+        src="home_page-images/menu-button.png"
+        alt="drawing of 3 horizontal green lines stacked on top each other, when clicked redirects user to 'menu page'"
+      >
+    </div>
+
+     <div
+      id="home-button"
+      class="img-item clickable"
+      data-href="index.html"
+      role="link"
+      tabindex="0"
+      aria-label="opens home page"
+    >
+      <img
+        src="home_page-images/home-button.png"
+        alt="drawing of a small house. when clicked on redirects user to 'home page'"
+      >
+    </div>
+
+    <div
+      id="music-button"
+      class="img-item clickable"
+      data-href="music.html"
+      role="link"
+      tabindex="0"
+      aria-label="opens home page"
+    >
+      <img
+        src="home_page-images/music-button.png"
+        alt="drawing of a small music note. when clicked on redirects user to 'music page'"
+      >
+    </div>
+   <!-- button section ends -->
+
+
+
+  <!-- copyright text  -->
+   <div class="copyright">  &copy; <span id="year"></span> </div>
+   <div class="name"> Anouk Froitzheim </div>
+     <!-- Song title display — edit #song-title in your CSS to style this freely -->
+  <p id="song-title">Song Name - Artist</p>
+
+  </div>
+
+  <!-- ============================================================
+     MUSIC PLAYER
+     Paste this wherever you want the player to appear on the page
+     ============================================================ -->
+
+<div id="music-player" class="img-layer" aria-hidden="true">
+
+  <!-- Playback controls -->
+  <div id="player-controls">
+
+    <!-- Rewind / previous -->
+    <div
+      id="rewind-button"
+      class="img-item clickable"
+      role="button"
+      tabindex="0"
+      aria-label="Rewind to previous song"
+      onclick="prevSong()"
+    >
+      <img 
+      src="music/rewind.png" 
+      alt="Rewind button">
+    </div>
+
+    <!-- Play / Pause -->
+    <div
+      id="play-pause-button"
+      class="img-item clickable"
+      role="button"
+      tabindex="0"
+      aria-label="Play or pause the current song"
+      onclick="togglePlayPause()"
+    >
+      <img 
+      id="play-pause-img" 
+      src="music/pause-play.png" 
+      alt="Play/Pause button">
+    </div>
+
+    <!-- Skip / next -->
+    <div
+      id="skip-button"
+      class="img-item clickable"
+      role="button"
+      tabindex="0"
+      aria-label="Skip to next song"
+      onclick="nextSong()"
+    >
+      <img src="music/skip.png" 
+      alt="Skip button">
+    </div>
+
+  </div>
+
+  <!-- Volume control -->
+    <div id="volume-control">
+        <div id="volume-track-container">
+            <div class="img-item static">
+                <img src="music/slider.png" id="volume-track" alt="volume track">
+            </div>
+            <div id="volume-knob-wrapper" class="img-item clickable">
+                <img src="music/knob.png" id="volume-knob" alt="volume knob" draggable="false">
+            </div>
+        </div>
+    </div>
+
+  <!-- Hidden audio element — the browser handles actual playback -->
+  <audio id="audio-player"></audio>
+
+
+  
+</div>
+
+<script>
+  // =============================================
+  // PAGE TRANSITION — "MELT" EFFECT
+  // Tweak these two values to adjust the feel:
+  // =============================================
+  const TRANSITION_DURATION = 300;   // milliseconds — how long each half takes
+  const TRANSITION_DRIFT    = 20;    // pixels — how far down the page "melts"
+
+  // Inject the transition styles
+  const style = document.createElement('style');
+  style.textContent = `
+    .img-layer {
+      transition: opacity ${TRANSITION_DURATION}ms ease,
+                  transform ${TRANSITION_DURATION}ms ease,
+                  filter ${TRANSITION_DURATION}ms ease;
+    }
+    .img-layer.melt-out {
+      opacity: 0;
+      transform: translateY(${TRANSITION_DRIFT}px);
+      filter: blur(6px);
+    }
+    .img-layer.melt-in {
+      opacity: 0;
+      transform: translateY(-${TRANSITION_DRIFT}px);
+      filter: blur(6px);
+    }
+  `;
+  document.head.appendChild(style);
+
+// Fade IN on page load — targets ALL img-layer divs
+  const layers = document.querySelectorAll('.img-layer');
+  layers.forEach(l => l.classList.add('melt-in'));
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => layers.forEach(l => l.classList.remove('melt-in')));
+  });
+
+  // Fade OUT then navigate on click/keydown
+  function navigateTo(url) {
+    layers.forEach(l => l.classList.add('melt-out'));
+    setTimeout(() => { window.location.href = url; }, TRANSITION_DURATION);
+  }
+
+  document.querySelectorAll('.img-item.clickable').forEach(item => {
+    const target = item.dataset.href;
+    if (!target || target === 'INSERT-REDIRECT-PAGE-HERE') return;
+
+    item.addEventListener('click', () => navigateTo(target));
+    item.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        navigateTo(target);
+      }
+    });
+  });
+</script>
+
+  <!-- Your scripts -->
+  <script src="script.js"></script>
+
+
+</body>
+
+
+</html>

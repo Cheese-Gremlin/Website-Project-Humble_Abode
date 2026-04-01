@@ -144,20 +144,32 @@
     }
 
 /* button section*/
-    #button-board {
-     width: 10.5vw;
-     translate: 39.5vw -3.2vw;
+#button-board {
+     width: 16vw;
+     translate: 34vw -3.2vw;
     }
+
+    #back-button {
+      width: 3.1vw;
+      translate: 45.3vw -2.5vw;
+    }
+
 
     #menu-button {
      width: 4.95vw;
-      translate: 44.2vw -2.8vw;
+      translate: 41.5vw -2.8vw;
     }
 
     #home-button {
       width: 4.95vw;
-      translate: 41vw -2.85vw;
+      translate: 38.2vw -2.85vw;
     }
+
+    #music-button {
+     width: 3.2vw;
+      translate: 35.8vw -2.2vw;
+    }
+
    /* button section ends */
 
   </style>
@@ -307,24 +319,59 @@
       >
     </div>
 
- <div id="menu-button" class="img-item static">
+    <div
+      id="back-button"
+      class="img-item clickable"
+      role="button"
+      tabindex="0"
+      aria-label="goes back to the previous page"
+      onclick="history.back()"
+    >
       <img
-        src="home_page-images/menu-button.png"
-        alt="drawing of 3 horizontal green lines stacked on top each other"
+        src="home_page-images/back-button.png"
+        alt="drawing of a back arrow, when clicked returns to previous page"
       >
     </div>
-  
+
+    <div
+      id="menu-button"
+      class="img-item clickable"
+      data-href="menu.html"
+      role="link"
+      tabindex="0"
+      aria-label="opens menu page"
+    >
+      <img
+        src="home_page-images/menu-button.png"
+        alt="drawing of 3 horizontal green lines stacked on top each other, when clicked redirects user to 'menu page'"
+      >
+    </div>
+
      <div
       id="home-button"
       class="img-item clickable"
       data-href="index.html"
       role="link"
       tabindex="0"
-      aria-label="opens menu on side of screen"
+      aria-label="opens home page"
     >
       <img
         src="home_page-images/home-button.png"
         alt="drawing of a small house. when clicked on redirects user to 'home page'"
+      >
+    </div>
+
+    <div
+      id="music-button"
+      class="img-item clickable"
+      data-href="music.html"
+      role="link"
+      tabindex="0"
+      aria-label="opens home page"
+    >
+      <img
+        src="home_page-images/music-button.png"
+        alt="drawing of a small music note. when clicked on redirects user to 'music page'"
       >
     </div>
    <!-- button section ends -->

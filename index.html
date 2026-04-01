@@ -41,7 +41,7 @@
        BACKGROUND COLOUR
        ============================================= */
     body {
-      background: #88AE92;
+      background: #6A9475; /* wall: #87ad91 floor: #6A9475*/
     }
 
   
@@ -102,77 +102,105 @@
        EXAMPLE IMAGE POSITIONS
        Adjust top / left / width / height freely.
        ============================================= */
+
     #layout {
-      width: 75vw;
-      translate: -37.5vw;
+      width: 100vw;  /* 75 */
+      translate: -50vw -4vw; /* -37.5 */
+    }
+
+    #wall {
+      width: 100vw;
+      translate: -50vw -14.85vw;
     }
 
     #shelf {
-      width: 33.7890625vw;
-      translate: -37.5vw 17.8vw;
+      width: 41vw;
+      translate: -51vw 31.3vw;
     }
-     #desk {
-      width: 39.88vw;
-      translate: -2.4vw 13.3vw;
+
+    #recordPlayer {
+      width: 25vw;
+      translate: -40vw 26.5vw;
     }
-     #sign {
-      width: 41.367vw;
-      translate: -12vw -1.8vw;
+
+    #desk {
+      width: 51vw;
+      translate: -0.7vw 30.5vw;
+    }
+
+    #drawer {
+      width: 9.5vw;
+      translate: 32.55vw 40.2vw;
+    }
+
+    #sign {
+      width: 55vw;
+      translate: -16vw -6.5vw;
     }
 
     #window-night {
-      width: 26.914vw;
-      translate: -37.5vw -2.2vw;
+      width: 36vw;
+      translate: -50vw -7.2vw;
     }
 
     #window-day {
-      width: 26.914vw;
-      translate: -37.5vw -2.2vw;
+      width: 36vw;
+      translate: -50vw -7.2vw;
     }
 
     #corkboard{
-      width: 30vw;
-      translate: 6vw 3.7vw;
+      width: 39vw;
+      translate: 7vw 1vw;
     }
 
     #poster {
-      width: 17.852vw;
-      translate: -14.5vw 7.8vw;
+      width: 24vw;
+      translate: -19.5vw 6.2vw;
     }
 
     #PC {
-      width: 39.88vw;
-      translate: -2.4vw 13.3vw;
+      width: 50vw;
+      translate: -1vw 15vw;
     }
 
     #chair {
-      width: 20.43vw;
-      translate: -2.4vw 27vw;
+      width: 23vw;
+      translate: 2vw 32vw;
     }
 
 
     /* draw these images last */
-    #page-frame {
+    /* #page-frame {
       width: 82vw;
       translate: -41vw -11vw;
-    }
+    } */
 
     /* button section*/
     #button-board {
-     width: 10.5vw;
-     translate: 39.5vw -3.2vw;
+     width: 16vw;
+     translate: 34vw -3.2vw;
+    }
+
+    #back-button {
+      width: 3.1vw;
+      translate: 45.3vw -2.5vw;
     }
 
     #menu-button {
      width: 4.95vw;
-      translate: 44.2vw -2.8vw;
+      translate: 41.5vw -2.8vw;
     }
 
     #home-button {
       width: 4.95vw;
-      translate: 41vw -2.85vw;
+      translate: 38.2vw -2.85vw;
     }
-   /* button section ends*/
+
+    #music-button {
+     width: 3.2vw;
+      translate: 35.8vw -2.2vw;
+    }
+/*button section ends*/
 
   </style>
 </head>
@@ -198,17 +226,38 @@
   <div class="img-layer" aria-hidden="true">
 
 
-     <!-- <div id="layout" class="img-item static">
+    <!-- <div id="layout" class="img-item static">
       <img
         src="read_me-images/home_page_layout.png"
         alt="sketch of final layout of objects/images"
       >
     </div> -->
 
+    <div id="wall" class="img-item static">
+      <img
+        src="home_page-images/wall.png"
+        alt="dark green floor"
+      >
+    </div>
+
     <div id="shelf" class="img-item static">
       <img
         src="home_page-images/shelf.png"
         alt="drawing of a shelf"
+      >
+    </div>
+
+    <div
+      id="recordPlayer"
+      class="img-item clickable"
+      data-href="music.html"
+      role="link"
+      tabindex="0"
+      aria-label="Go to music page"
+    >
+      <img
+        src="home_page-images/record-player.png"
+        alt="drawing of a record player. when clicked on redirects user to 'music page'"
       >
     </div>
 
@@ -218,6 +267,21 @@
         alt="drawing of a desk"
       >
     </div>
+
+    <div
+      id="drawer"
+      class="img-item clickable"
+      data-href="menu.html"
+      role="link"
+      tabindex="0"
+      aria-label="Go to menu page"
+    >
+      <img
+        src="home_page-images/drawer.png"
+        alt="drawing of a drawer. when clicked on redirects user to 'menu page'"
+      >
+    </div>
+
 
     <div id="sign" class="img-item static">
       <img
@@ -294,31 +358,66 @@
     </div>
 
    <!-- button section -->
- <div id="button-board" class="img-item static">
+  <div id="button-board" class="img-item static">
       <img
         src="home_page-images/button-board.png"
         alt="drawing of a blank wooden sign/board"
       >
     </div>
 
- <div id="menu-button" class="img-item static">
+    <div
+      id="back-button"
+      class="img-item clickable"
+      role="button"
+      tabindex="0"
+      aria-label="goes back to the previous page"
+      onclick="history.back()"
+    >
       <img
-        src="home_page-images/menu-button.png"
-        alt="drawing of 3 horizontal green lines stacked on top each other"
+        src="home_page-images/back-button.png"
+        alt="drawing of a back arrow, when clicked returns to previous page"
       >
     </div>
-  
+
+    <div
+      id="menu-button"
+      class="img-item clickable"
+      data-href="menu.html"
+      role="link"
+      tabindex="0"
+      aria-label="opens menu page"
+    >
+      <img
+        src="home_page-images/menu-button.png"
+        alt="drawing of 3 horizontal green lines stacked on top each other, when clicked redirects user to 'menu page'"
+      >
+    </div>
+
      <div
       id="home-button"
       class="img-item clickable"
       data-href="index.html"
       role="link"
       tabindex="0"
-      aria-label="opens menu on side of screen"
+      aria-label="opens home page"
     >
       <img
         src="home_page-images/home-button.png"
         alt="drawing of a small house. when clicked on redirects user to 'home page'"
+      >
+    </div>
+
+    <div
+      id="music-button"
+      class="img-item clickable"
+      data-href="music.html"
+      role="link"
+      tabindex="0"
+      aria-label="opens home page"
+    >
+      <img
+        src="home_page-images/music-button.png"
+        alt="drawing of a small music note. when clicked on redirects user to 'music page'"
       >
     </div>
    <!-- button section ends -->
@@ -329,7 +428,7 @@
    <div class="name"> Anouk Froitzheim </div>
 
    <!-- disclaimer text  -->
-   <div class="disclaimer"> This website is best viewed on laptop/PC in full screen mode </div>
+   <div class="disclaimerHome"> This website is best viewed on laptop/PC in full screen mode </div>
 
   </div>
 <script>

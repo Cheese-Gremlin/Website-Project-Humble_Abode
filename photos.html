@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Anouk's Photo Series</title>
+  <title>Anouk's Wallpapers</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🖼️</text></svg>">
   <!-- Describe your page — shows up in search results and browser tabs -->
-  <meta name="description" content="Anouk's Photos - a series following the colour yellow">
+  <meta name="description" content="Anouk's Wallpapers - made using code">
 
   <!-- Your styles -->
   <link rel="stylesheet" href="styles.css">
@@ -42,7 +42,7 @@
        BACKGROUND COLOUR
        ============================================= */
     body {
-      background: #88AE92;
+      background: #B6955D;
     }
 
     /* =============================================
@@ -107,21 +107,38 @@
       translate: -37.5vw;
     }
 
+    #project{
+      width: 55vw;
+      translate: -47vw 12vw;
+    }
+
+
         /* button section*/
     #button-board {
-     width: 10.5vw;
-     translate: 39.5vw -3.2vw;
+     width: 16vw;
+     translate: 34vw -3.2vw;
+    }
+
+    #back-button {
+      width: 3.1vw;
+      translate: 45.3vw -2.5vw;
     }
 
     #menu-button {
      width: 4.95vw;
-      translate: 44.2vw -2.8vw;
+      translate: 41.5vw -2.8vw;
     }
 
     #home-button {
       width: 4.95vw;
-      translate: 41vw -2.85vw;
+      translate: 38.2vw -2.85vw;
     }
+
+    #music-button {
+     width: 3.2vw;
+      translate: 35.8vw -2.2vw;
+    }
+
    /* button section ends*/
 
 
@@ -156,7 +173,13 @@
     </div> -->
 
 
-
+     <div
+      id="project" class="img-item static">
+      <img
+        src="gallery-images/photos.png"
+        alt="piece of paper with a photography series"
+      >
+    </div>
 
 
 <!-- reference for image function layout -->
@@ -183,24 +206,59 @@
       >
     </div>
 
- <div id="menu-button" class="img-item static">
+    <div
+      id="back-button"
+      class="img-item clickable"
+      role="button"
+      tabindex="0"
+      aria-label="goes back to the previous page"
+      onclick="history.back()"
+    >
       <img
-        src="home_page-images/menu-button.png"
-        alt="drawing of 3 horizontal green lines stacked on top each other"
+        src="home_page-images/back-button.png"
+        alt="drawing of a back arrow, when clicked returns to previous page"
       >
     </div>
-  
+
+    <div
+      id="menu-button"
+      class="img-item clickable"
+      data-href="menu.html"
+      role="link"
+      tabindex="0"
+      aria-label="opens menu page"
+    >
+      <img
+        src="home_page-images/menu-button.png"
+        alt="drawing of 3 horizontal green lines stacked on top each other, when clicked redirects user to 'menu page'"
+      >
+    </div>
+
      <div
       id="home-button"
       class="img-item clickable"
       data-href="index.html"
       role="link"
       tabindex="0"
-      aria-label="opens menu on side of screen"
+      aria-label="opens home page"
     >
       <img
         src="home_page-images/home-button.png"
         alt="drawing of a small house. when clicked on redirects user to 'home page'"
+      >
+    </div>
+
+    <div
+      id="music-button"
+      class="img-item clickable"
+      data-href="music.html"
+      role="link"
+      tabindex="0"
+      aria-label="opens home page"
+    >
+      <img
+        src="home_page-images/music-button.png"
+        alt="drawing of a small music note. when clicked on redirects user to 'music page'"
       >
     </div>
    <!-- button section ends -->
@@ -211,6 +269,9 @@
    <div class="copyright">  &copy; <span id="year"></span> </div>
    <div class="name"> Anouk Froitzheim </div>
    
+   <div class="worksTitle"> The Yellow Around Us -Photography series </div>
+   <div class="worksText"> For this project I took my camera and went for on a journey from my home to the city centre, taking pictures of anything yellow i saw. The images in this series where the ones that stuck out to me most. This was my first ever photography project and I had a lot of fun finding interesting ways to take pictures of ordinary things while exploring my surroundings. </div>
+
   </div>
 <script>
   // =============================================

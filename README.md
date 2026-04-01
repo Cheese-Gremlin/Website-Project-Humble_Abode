@@ -147,6 +147,14 @@ _Own work:_
     i will work on adding images and the functionality of the page for now and then have another look at how to improve this so that I am 100% happy.
     If i want it to fill the whole frame I may have to resize some things in my layout so that they fit properly which should not be a problem (id just have to redraw some elements)
     ⤷update 26/03/26 keeping the 'window view' because otherwise scaling will be an issue and with a frame it looks cleaner. Using a place holder frame for now but it doesnt feel very 'on theme'. i dont mind how it looks with the basic frame as it is very simple and straight forward but I feel like the frame is another potential area where i can 'show my personality' so I will keep thinking. ![alt text](home_page-images/page-frame.png)
+    ⤷ 1/02/26 update:
+    redrew some things and added a 'floor' in order to get rid of the 'frame view' and instead have the entire page filled with the room. 
+    ![alt text](<read_me-images/new room layout pt1.png>)
+    ![alt text](<read_me-images/new room layout pt1.5.png>)
+    -when page is on upright monitor, floor doesnt go fully down the page. changed by instead of having the floor be an image i made it the backgournd colour and instead loaded in an image of the wall
+    ![alt text](home_page-images/wall.png)
+    also resized 'disclaimer' so it doesnt overlap any images
+    ![alt text](<read_me-images/new room layout pt2.png>)
 
 **-loading images in with relation to vw to keep same spacing regardless of window size**
 ![alt text](read_me-images/home_page-pt4.1.png)
@@ -220,6 +228,11 @@ opinion:
     ⤷ 30/03/26
     changed wood colour of sign (same as frame) to make it more easy to notice and not blend into backgrounds. 
     ![alt text](<read_me-images/buttons-home pt2.png>)
+    ⤷ 1/04/26
+    added music and back button
+    functyion of back button was made _using AI_ but rest was by hand 
+    (AI code: onclick="history.back()")
+    ![alt text](<read_me-images/buttons pt3.png>)
 
 **-disclaimer text**
     -added a text to home page in the top left of the screen letting users know that the website is best viewed on laptop/PC on full screen. I made it a slightly transparent black so that it would be noticeable enough but not distracting from the overall page. The text is placed in a 'text box' so that it wraps so that it never covers the frame and always stays on the green in order to keep the text easy to read. (it overlaps when the window is made very very thin in width but very tall in height but this is a very unlikely screen size so shouldnt be a problem)
@@ -264,3 +277,48 @@ output:
 opinion:
     I tested this by imputing different co-ordinates in of where it is currently day/night
     happy with what it did. this was similar to what i attempted to make (spend about 2-3 hours doing it myself using what i found online) but wasnt able to because i didnt know the specific wording of things and had trouble finding them online. 
+
+**-adding music player** _with AI_
+this took me 4 hours with AI helping me the whole way as something wasnt correct in the code but figured it out in the end. I was so happy when it finally worked but also ready to give up. yet i was determined to make it look exactly how i envisioned (the perfectionist in me may be a hinder to my work progress but its fineeeee)
+
+my prompts:
+    Hi!
+    Can you help me add a music player to my website using html?
+    I have at least 3 songs that i want to load in.
+    I want the user to be able to stop and start the music, skip the song, rewind the song and change the volume. I want to  make the buttons for the controls out of images that i have loaded in via the following code:
+
+        <div
+        id="home-button"
+        class="img-item clickable"
+        data-href="index.html"
+        role="link"
+        tabindex="0"
+        aria-label="opens menu on side of screen"
+        >
+        <img
+            src="home_page-images/home-button.png"
+            alt="drawing of a small house. when clicked on redirects user to 'home page'"
+        >
+        </div>
+    I also want text that displays the current song. (i want to be able to fully edit the style of this text).
+    Please let me know if you have any questions
+output: 
+    it was drawing the images behind my already created ones so i had to add it to my already existing 'image layer' class which fixed it
+next challenge:
+    how do i make it so that the music keeps playing on all pages of my website?
+    This took quite a while of back and forth but it worked in the end. It could have worked quicker if I just gave the AI all my code but i didnt want to do that so that it didnt change things it wasnt supposed to and preferred for it to give me things i can copy and paste into my code so that I know what it is adding and can figure out how it works. 
+next challenge:
+    audio controlls
+    I wanted to use my own images. the AI created code seemed to just load in the browsers default volume control so it was different across browsers which i didnt like as it didnt match my art style at all. 
+    this is what took the most amount of time as the mouse input wasnt registering and then not being transferred (or something like that... i still dont fully understand but am happy its fixed)
+all the final code made with AI and some of my own trouble shooting
+![alt text](<read_me-images/AI music code CSS.png>)
+![alt text](<read_me-images/AI music code HTML.png>)
+![alt text](<read_me-images/AI music code JS pt1.png>)
+![alt text](<read_me-images/AI music code JS pt2.png>)
+![alt text](<read_me-images/AI music code JS pt3.png>)
+![alt text](read_me-images/music-page.png)
+
+
+**-Menu Page**
+Page to which the menu buttons goes. 
