@@ -18,6 +18,10 @@ im using Calude AI (sonnet 4.6) to help me code things that I dont have the skil
     I used Claude AI to create a 'base layer' which i can use to insert and position images that I have drawn by hand. This is the only thing the AI helped me make and took about 5min. The rest I did today all by myself with help from websites (e.g. https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements). Im very happy and proud with what ive done in the past 2 days and how much of it I did myself. I understand pretty much all the code (especially the stuff I have been changing) which im very pleased with.
     The 'workflow' of using AI to get a start when not knowing how to due to not having the skills is actually quite useful as you can use it to also learn how to do it and then do it yourself in the future. In a way its similar to googling how to do it and pasting in a piece of code someone else did and using it to build your own. This works a lot better for me than the last project where I was 'fully' relying on AI to build my project. I think a big help in that is choosing a simpler project because realistically I have the knowledge to do it all myself with slow janky code but i can use the AI to help speed up certain parts or help understand things I dont know.
     Overall im happy! maybe mainly because I got to do things myself rather than using the AI. 
+    02-04-26
+    Very happy with the turn out of the project. I am very glad that I made the decision to restart as my new approach was may more aligned with my goals for the project and I managed to create a Website I would actually use. 
+    I did sadly run out of time and wasnt able to add all the other cool things but maybe I will do that outside of the project. 
+    Im still on the fence and hesitant about AI but i am not as against it as before depending on how it is used
 
 
 # references:
@@ -236,8 +240,7 @@ opinion:
 
 **-disclaimer text**
     -added a text to home page in the top left of the screen letting users know that the website is best viewed on laptop/PC on full screen. I made it a slightly transparent black so that it would be noticeable enough but not distracting from the overall page. The text is placed in a 'text box' so that it wraps so that it never covers the frame and always stays on the green in order to keep the text easy to read. (it overlaps when the window is made very very thin in width but very tall in height but this is a very unlikely screen size so shouldnt be a problem)
-    colour of text is not up to 'accessability' standards. It would have to be fully black to meet them but that would make them stand out more and not align with design goals. Therefore this text is also written in the 'menu' text in full black. ---------------
------------------------------
+    colour of text is not up to 'accessability' standards. It would have to be fully black to meet them but that would make them stand out more and not align with design goals. Therefore this text is also written in the 'menu' text in full black. 
     Additionally, the text is not vital and the user can this experience the website without seeing/ reading it.
     ![alt text](read_me-images/disclaimer.png)
 
@@ -322,3 +325,6 @@ all the final code made with AI and some of my own trouble shooting
 
 **-Menu Page**
 Page to which the menu buttons goes. 
+-has navigation menu
+-disclaimer from home page about best viewing on laptop/desktop
+-AI use information

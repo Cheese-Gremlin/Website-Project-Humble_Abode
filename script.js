@@ -17,7 +17,7 @@
       const now = new Date();
 
       const isDay = now >= sunrise && now <= sunset;
-
+      console.log(isDay);
    const el = document.getElementById("window-day");
    if (el) el.style.opacity = isDay ? 1 : 0;
 

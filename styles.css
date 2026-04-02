@@ -64,6 +64,59 @@
   color: #000000af;
 }
 
+.aboutTitle{
+  position: static;
+  width: 37vw;
+  translate: -9vw 0.7vw;
+  font-size: 3.5vw;
+  font-family: "Pixelify Sans", sans-serif;
+  font-weight: 50px;
+  color: #000000c7;
+}
+
+.aboutName{
+  position: static;
+  width: 37vw;
+  translate: -18vw 1.5vw;
+  font-size: 2.5vw;
+  font-family: "Pixelify Sans", sans-serif;
+  font-weight: 50px;
+  color: #000000af;
+}
+
+.aboutText{
+  position: static;
+  width: 36vw;
+  translate: -18vw 2vw;
+  padding-bottom: 1vw;
+  font-size: 2vw;
+  font-family: "Pixelify Sans", sans-serif;
+  font-weight: 50px;
+  color: #000000af;
+}
+
+.aboutContact{
+  position: static;
+  width: 36vw;
+  translate: -18vw 2vw;
+  padding-bottom: 0.2vw;
+  font-size: 2vw;
+  font-family: "Pixelify Sans", sans-serif;
+  font-weight: 50px;
+  color: #000000af;
+}
+
+.indexText{
+  position: static;
+  width: 10vw;
+  translate: -17vw 7vw;
+  line-height: 2vw;
+  font-size: 2.3vw;
+  font-family: "Pixelify Sans", sans-serif;
+  font-weight: 50px;
+  color: #000000af;
+}
+
 #navigationTitle{
   transform: rotate(2deg);
   position: static;
