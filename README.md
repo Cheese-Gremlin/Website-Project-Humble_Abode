@@ -1,6 +1,7 @@
 # Website-Project-Humble_Abode
 mddn242 project 1 - Anouk's Humble Abode website
 
+
 # goals:
     my main goal is to use my own skills and AI to create a website that I am happy with. It is very important to me that I enjoy the process of interacting with the AI and using it to help me rather than the AI doing everything and me having no control over it. Due to this I will be making a 'simple' project where I use the AI to do 'simple' tasks rather than very complicated ones because this means that I will understand the code and be able to change things with the knowledge that i have and not have to fully rely on the AI to do everything, but also so that the AI has less chance of messing up and I can spend time on the creative side of things rather than having to focus on writing good prompts for the AI to follow as that is not what 'designing' means to me. 
 
